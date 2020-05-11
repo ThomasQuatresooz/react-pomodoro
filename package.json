@@ -1,0 +1,43 @@
+{
+  "name": "react-pomodoro",
+  "version": "0.0.1",
+  "description": "A pomodoro made in react",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ThomasQuatresooz/react-pomodoro.git"
+  },
+  "author": "Thomas Q",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ThomasQuatresooz/react-pomodoro/issues"
+  },
+  "homepage": "https://github.com/ThomasQuatresooz/react-pomodoro#readme",
+  "devDependencies": {
+    "@becode/eslint-config": "^0.9.1",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.0.0",
+    "eslint-plugin-prettier": "^3.1.3",
+    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-unicorn": "^19.0.1",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.2",
+    "prettier": "^2.0.5"
+  },
+  "lint-staged": {
+    "*.json": [
+      "npx prettier --write"
+    ],
+    "*.js": [
+      "npx eslint --fix --cache"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npx lint-staged"
+    }
+  }
+}
