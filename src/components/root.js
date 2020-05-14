@@ -10,7 +10,7 @@ import {Container, Row, Col} from "react-bootstrap";
 const RootComponent = () => (
     <Container>
         <Row>
-            <Col sm={{span: 6, offset: 3}}>
+            <Col md={{span: 6, offset: 3}} sm={12}>
                 <PomoTimer />
             </Col>
         </Row>

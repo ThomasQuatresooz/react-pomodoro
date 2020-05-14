@@ -5,6 +5,7 @@
 
 import React, {useState, useEffect} from "react";
 import {Card, Button, ButtonGroup, Modal} from "react-bootstrap";
+import {StyleSheet, css} from "aphrodite";
 import click from "../audio/click.mp3";
 import ding from "../audio/ding.mp3";
 import tick from "../audio/tick.mp3";
@@ -82,6 +83,29 @@ const PomoTimer = props => {
         }
     }, [timer]);
 
+    const styles = StyleSheet.create({
+        timer: {
+            width: "75%",
+            textAlign: "center",
+
+            "@media (max-width: 576px)": {
+                fontSize: "5em",
+            },
+            "@media (min-width: 576px) and (max-width: 767.98px)": {
+                fontSize: "5em",
+            },
+            "@media (min-width: 767.98px) and (max-width: 992px)": {
+                fontSize: "5em",
+            },
+            "@media (min-width: 992px) and (max-width: 1199.98px)": {
+                fontSize: "5em",
+            },
+            "@media (min-width: 1200px)": {
+                fontSize: "6em",
+            },
+        },
+    });
+
     return (
         <div>
             <Card className={"my-auto"}>
@@ -90,11 +114,7 @@ const PomoTimer = props => {
                 </Card.Header>
                 <Card.Body>
                     <div className={"d-flex flex-row align-items-center"}>
-                        <p
-                            className={"text-center w-75 "}
-                            style={{fontSize: "6rem"}}>
-                            {displaytimer()}
-                        </p>
+                        <p className={css(styles.timer)}>{displaytimer()}</p>
                         <ButtonGroup vertical className={"w-25"}>
                             <Button
                                 disabled={isRunning}
@@ -157,10 +177,10 @@ const PomoTimer = props => {
 
 PomoTimer.defaultProps = {
     //in seconds = 25 mins - 1500
-    workingSession: 10,
+    workingSession: 1500,
 
     //in seconds = 5 min - 300s
-    breakSession: 5,
+    breakSession: 300,
 };
 
 export default PomoTimer;
