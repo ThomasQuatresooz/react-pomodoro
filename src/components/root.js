@@ -11,8 +11,8 @@ import {StyleSheet, css} from "aphrodite";
 
 const RootComponent = () => {
     const pattern = Trianglify({
-        width: window.innerWidth,
-        height: window.innerHeight,
+        width: 1920,
+        height: 1080,
     });
 
     const styles = StyleSheet.create({
