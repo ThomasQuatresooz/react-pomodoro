@@ -2,7 +2,7 @@
   "name": "react-pomodoro",
   "version": "0.0.1",
   "description": "A pomodoro made in react",
-  "main": "index.js",
+  "main": "index.html",
   "scripts": {
     "dev": "parcel src/index.html",
     "build": "parcel build src/index.html>"
@@ -43,7 +43,9 @@
     }
   },
   "dependencies": {
+    "bootstrap": "^4.4.1",
     "react": "^16.13.1",
+    "react-bootstrap": "^1.0.1",
     "react-dom": "^16.13.1"
   }
 }
