@@ -6,15 +6,31 @@
 import React from "react";
 import PomoTimer from "./pomotimer";
 import {Container, Row, Col} from "react-bootstrap";
+import Trianglify from "trianglify";
+import {StyleSheet, css} from "aphrodite";
 
-const RootComponent = () => (
-    <Container>
-        <Row>
-            <Col md={{span: 6, offset: 3}} sm={12}>
-                <PomoTimer />
-            </Col>
-        </Row>
-    </Container>
-);
+const RootComponent = () => {
+    const pattern = Trianglify({
+        width: window.innerWidth,
+        height: window.innerHeight,
+    });
+
+    const styles = StyleSheet.create({
+        triangle: {
+            height: "100%",
+            backgroundImage: `url(${pattern.png()})`,
+            backgroundRepeat: "center",
+        },
+    });
+    return (
+        <Container className={css(styles.triangle)} fluid>
+            <Row className={"h-100"}>
+                <Col className={"my-auto"} md={{span: 6, offset: 3}} sm={12}>
+                    <PomoTimer />
+                </Col>
+            </Row>
+        </Container>
+    );
+};
 
 export default RootComponent;

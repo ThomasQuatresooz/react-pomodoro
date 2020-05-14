@@ -70,7 +70,7 @@ const PomoTimer = props => {
     }, [isRunning]);
 
     useEffect(() => {
-        if (timer === 0) {
+        if (timer === 0 && isRunning) {
             playDingSound();
             document.title = isBreak ? "Back to work ?" : "Take a break !";
             setRunningState(!isRunning);
@@ -108,7 +108,7 @@ const PomoTimer = props => {
 
     return (
         <div>
-            <Card className={"my-auto"}>
+            <Card className={"shadow-lg"}>
                 <Card.Header className={"text-center"}>
                     {isBreak ? "Pause Session" : "Working Session"}
                 </Card.Header>
