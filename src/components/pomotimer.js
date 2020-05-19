@@ -33,19 +33,12 @@ const PomoTimer = props => {
         setRunningState(true);
     }
 
-    function playClickSound() {
-        const sound = new Audio(click);
-        sound.play();
+    function playSound(sound, volume = 0.3) {
+        const sfx = new Audio(sound);
+        sfx.volume = volume;
+        sfx.play();
     }
 
-    function playDingSound() {
-        const sound = new Audio(ding);
-        sound.play();
-    }
-    function playTickSound() {
-        const sound = new Audio(tick);
-        sound.play();
-    }
     function displaytimer() {
         const seconds = timer % 60;
         const minutes = parseInt(timer / 60) % 60;
@@ -71,7 +64,7 @@ const PomoTimer = props => {
 
     useEffect(() => {
         if (timer === 0 && isRunning) {
-            playDingSound();
+            playSound(ding);
             document.title = isBreak ? "Back to work ?" : "Take a break !";
             setRunningState(!isRunning);
             setShowState(true);
@@ -79,7 +72,7 @@ const PomoTimer = props => {
             document.title = displaytimer();
         }
         if (isRunning && timer <= 5 && timer > 0) {
-            playTickSound();
+            playSound(tick, 0.2);
         }
     }, [timer]);
 
@@ -119,7 +112,7 @@ const PomoTimer = props => {
                             <Button
                                 disabled={isRunning}
                                 onClick={() => {
-                                    playClickSound();
+                                    playSound(click);
                                     setTimer(timer + 60);
                                 }}>
                                 {"+"}
@@ -127,14 +120,14 @@ const PomoTimer = props => {
                             <Button
                                 disabled={timer <= 0}
                                 onClick={() => {
-                                    playClickSound();
+                                    playSound(click);
                                     setRunningState(!isRunning);
                                 }}>
                                 {isRunning ? "Stop" : "Play"}
                             </Button>
                             <Button
                                 onClick={() => {
-                                    playClickSound();
+                                    playSound(click);
                                     resetTimer();
                                 }}>
                                 {"Reset"}
@@ -144,7 +137,7 @@ const PomoTimer = props => {
                                     isRunning || parseInt(timer / 60) % 60 === 0
                                 }
                                 onClick={() => {
-                                    playClickSound();
+                                    playSound(click);
                                     setTimer(timer - 60);
                                 }}>
                                 {"-"}
